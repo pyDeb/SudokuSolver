@@ -39,24 +39,24 @@ def weighted_random_choice(choices):
 
 def split_first_part(parent, whichSquare, whichIndex):
     parentFirstPart = []
-    #square haye kamel badi
+    #next completed squares
     for i in range(whichSquare):
         for value in parent[i]:
             parentFirstPart.append(value)
 
-    #ye square naghes
+    #an uncompleted square
     for i in range(whichIndex):
         parentFirstPart.append(parent[whichSquare][i])
     return parentFirstPart
 
 
 def split_second_part(parent, whichSquare, whichIndex):
-    ##ye square naghes
+    ##an uncompleted square
     parentScondPart = []
     for i in range(whichIndex, D):
         parentScondPart.append(parent[whichSquare][i])
 
-    #square haye kamel badi
+    #next completed squares
     for i in range(whichSquare + 1, D):
         for value in parent[i]:
             parentScondPart.append(value)
@@ -170,7 +170,7 @@ def fitness_chromosome(chromosome):
     return 1/(1+cnt)
 
 
-#stupid python does not recognize list as a candidate key
+# python does not recognize list as a candidate key -_-
 def convert_list_to_string(popList):
     popStr = []
     for chromosome in popList:
